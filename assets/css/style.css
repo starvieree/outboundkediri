@@ -217,6 +217,7 @@ p{color:var(--ink-500);}
 .package-card{background:var(--white); border-radius:var(--radius-lg); padding:26px; border:1px solid transparent; display:flex; flex-direction:column; gap:12px; transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease; position:relative; overflow:hidden;}
 .package-card:hover{box-shadow:var(--shadow-soft); transform:translateY(-4px); border-color:var(--green-700);}
 .package-card.featured{}
+.package-card.featured h3{padding-top: 16px;}
 .package-badge{position:absolute; top:12px; left:12px; background:var(--gold-500); color:var(--dark-green); font-size:.7rem; font-weight:700; padding:5px 12px; border-radius:999px; z-index:2;}
 .package-img{width:calc(100% + 52px); max-width:none; margin:-26px -26px 0 -26px; height:180px; object-fit:cover; display:block;}
 .package-card h3{font-size:1.05rem;}
@@ -224,6 +225,8 @@ p{color:var(--ink-500);}
 .package-list{display:flex; flex-direction:column; gap:6px; font-size:.85rem; color:var(--ink-500);}
 .package-list li{display:flex; gap:8px; align-items:flex-start;}
 .package-list li::before{content:"✓"; color:var(--green-700); font-weight:700;}
+.package-card .btn{margin-top: auto;}
+.package-card .btn{margin-top: auto;}
 .package-price{font-family:var(--font-display); font-size:1.18rem; color:var(--dark-green); margin-top:2px;}
 .package-price span{font-family:var(--font-body); font-size:.74rem; color:var(--ink-500); font-weight:500;}
 .package-meta{display:flex; gap:10px; font-size:.76rem; color:var(--ink-500); flex-wrap:wrap;}
@@ -284,6 +287,15 @@ p{color:var(--ink-500);}
 .filter-chip-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px;}
 .filter-chip{padding:9px 16px; border-radius:999px; border:1px solid var(--line); font-size:.84rem; font-weight:600; color:var(--ink-700); background:var(--white);}
 .filter-chip.active{background:var(--dark-green); color:var(--white); border-color:var(--dark-green);}
+@media (max-width: 768px) {
+  .filter-chip-row {
+    justify-content: space-between;
+  }
+  .filter-chip {
+    flex: 1 1 calc(50% - 10px);
+    text-align: center;
+  }
+}
 .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
 .gallery-item{border-radius:var(--radius-md); overflow:hidden; position:relative; aspect-ratio:1/0.85;}
 .gallery-item img{width:100%; height:100%; object-fit:cover;}
@@ -291,6 +303,7 @@ p{color:var(--ink-500);}
 .gallery-caption strong{display:block; font-size:.86rem;}
 .gallery-caption span{font-size:.72rem; opacity:.85;}
 @media (max-width:800px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:500px){.gallery-grid{grid-template-columns:1fr;}}
 
 .video-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
 .video-card{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-soft); background:var(--white); border:1px solid var(--line);}
@@ -389,7 +402,7 @@ p{color:var(--ink-500);}
 /* ============================================================
    CTA BANNER
 ============================================================ */
-.cta-banner{background:linear-gradient(120deg,var(--dark-green),var(--green-900)); border-radius:28px; padding:48px; color:var(--white); display:flex; flex-direction:column; align-items:center; text-align:center; gap:24px; margin-bottom: 0;}
+.cta-banner{background:linear-gradient(120deg,var(--dark-green),var(--green-900)); border-radius:28px; padding:48px; color:var(--white); display:flex; flex-direction:column; align-items:center; text-align:center; gap:24px; margin: 0;}
 .cta-banner h2{color:var(--white); max-width:600px;}
 .cta-banner p{color:rgba(255,255,255,0.78); margin-top:10px; max-width:560px;}
 .cta-actions{display:flex; gap:12px; flex-wrap:wrap; justify-content:center;}
@@ -397,7 +410,7 @@ p{color:var(--ink-500);}
 /* ============================================================
    FOOTER
 ============================================================ */
-.site-footer{background:var(--dark-green); color:rgba(255,255,255,0.78); padding:60px 0 26px; margin-top:20px;}
+.site-footer{background:var(--dark-green); color:rgba(255,255,255,0.78); padding:60px 0 26px; margin-top:0;}
 .footer-grid{display:grid; grid-template-columns:1.3fr repeat(3,1fr); gap:38px;}
 .footer-brand strong{color:var(--white); font-family:var(--font-display); font-size:1.15rem;}
 .footer-brand p{color:rgba(255,255,255,0.65); font-size:.87rem; margin-top:12px; max-width:32ch;}
@@ -453,5 +466,12 @@ p{color:var(--ink-500);}
   .cta-banner {
     padding: 32px 24px;
     /* gap: 16px; */
+  }
+  .cta-actions {
+    width: 100%;
+  }
+  .cta-actions .btn {
+    width: 100%;
+    text-align: center;
   }
 }
