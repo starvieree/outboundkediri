@@ -141,4 +141,34 @@
     el.classList.add('animate-hidden');
     observer.observe(el);
   });
+
+  /* ---------- Blog Search ---------- */
+  var blogSearchInput = document.getElementById("blogSearchInput");
+  var blogSearchBtn = document.getElementById("blogSearchBtn");
+  var blogCards = document.querySelectorAll(".blog-card");
+
+  if (blogSearchInput && blogCards.length) {
+    function performSearch() {
+      var query = blogSearchInput.value.toLowerCase().trim();
+      blogCards.forEach(function (card) {
+        var titleElement = card.querySelector("h3");
+        if (titleElement) {
+          var titleText = titleElement.textContent.toLowerCase();
+          if (titleText.includes(query)) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        }
+      });
+    }
+
+    if (blogSearchBtn) {
+      blogSearchBtn.addEventListener("click", performSearch);
+    }
+    
+    blogSearchInput.addEventListener("keyup", function (e) {
+      performSearch();
+    });
+  }
 })();
