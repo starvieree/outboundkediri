@@ -100,6 +100,139 @@
     });
   }
 
+  /* ---------- Network Popup ---------- */
+  var networkBtn = document.getElementById("networkBtn");
+  var networkPopup = document.getElementById("networkPopup");
+  var closeNetworkBtn = document.getElementById("closeNetworkBtn");
+
+  if (networkBtn && networkPopup && closeNetworkBtn) {
+    networkBtn.addEventListener("click", function () {
+      networkPopup.classList.add("show");
+    });
+
+    closeNetworkBtn.addEventListener("click", function () {
+      networkPopup.classList.remove("show");
+    });
+
+    networkPopup.addEventListener("click", function (e) {
+      if (e.target === networkPopup) {
+        networkPopup.classList.remove("show");
+      }
+    });
+  }
+
+  /* ---------- Blog Pagination ---------- */
+  var blogGrid = document.querySelector(".blog-grid");
+  var paginationContainer = document.querySelector(".pagination");
+  
+  if (blogGrid && paginationContainer) {
+    var articles = Array.from(blogGrid.querySelectorAll(".blog-card"));
+    var itemsPerPage = 8;
+    var totalPages = Math.ceil(articles.length / itemsPerPage);
+    var currentPage = 1;
+    var maxVisibleButtons = 5;
+
+    function renderArticles() {
+      var startIndex = (currentPage - 1) * itemsPerPage;
+      var endIndex = startIndex + itemsPerPage;
+
+      articles.forEach(function(article, index) {
+        if (index >= startIndex && index < endIndex) {
+          article.style.display = "";
+        } else {
+          article.style.display = "none";
+        }
+      });
+    }
+
+    function renderPagination() {
+      paginationContainer.innerHTML = "";
+      
+      if (totalPages <= 1) return;
+
+      // Prev Button
+      var prevBtn = document.createElement("a");
+      prevBtn.href = "#";
+      prevBtn.className = "nav-btn";
+      prevBtn.innerHTML = '← <span class="hide-mobile">Sebelumnya</span>';
+      if (currentPage === 1) {
+        prevBtn.style.pointerEvents = "none";
+        prevBtn.style.opacity = "0.5";
+      }
+      prevBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+          currentPage--;
+          updateView();
+        }
+      });
+      paginationContainer.appendChild(prevBtn);
+
+      // Page Numbers
+      var startPage = Math.max(1, currentPage - Math.floor(maxVisibleButtons / 2));
+      var endPage = Math.min(totalPages, startPage + maxVisibleButtons - 1);
+
+      if (endPage - startPage + 1 < maxVisibleButtons) {
+        startPage = Math.max(1, endPage - maxVisibleButtons + 1);
+      }
+
+      for (var i = startPage; i <= endPage; i++) {
+        var pageBtn = document.createElement("a");
+        pageBtn.href = "#";
+        pageBtn.textContent = i;
+        if (i === currentPage) {
+          pageBtn.className = "active";
+        }
+        
+        // Hide some buttons on mobile if there are many pages
+        if (totalPages > 3) {
+           if (i !== currentPage && i !== currentPage - 1 && i !== currentPage + 1) {
+               pageBtn.classList.add("hide-mobile");
+           }
+        }
+
+        pageBtn.addEventListener("click", (function(page) {
+          return function(e) {
+            e.preventDefault();
+            currentPage = page;
+            updateView();
+          };
+        })(i));
+        paginationContainer.appendChild(pageBtn);
+      }
+
+      // Next Button
+      var nextBtn = document.createElement("a");
+      nextBtn.href = "#";
+      nextBtn.className = "nav-btn";
+      nextBtn.innerHTML = '<span class="hide-mobile">Selanjutnya</span> →';
+      if (currentPage === totalPages) {
+        nextBtn.style.pointerEvents = "none";
+        nextBtn.style.opacity = "0.5";
+      }
+      nextBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
+      paginationContainer.appendChild(nextBtn);
+    }
+
+    function updateView() {
+      renderArticles();
+      renderPagination();
+      // Optional: scroll to top of blog grid
+      var yOffset = -100; 
+      var y = blogGrid.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior: 'smooth'});
+    }
+
+    // Initialize
+    updateView();
+  }
+
   /* ---------- FAQ Accordion Behavior ---------- */
   var faqItems = document.querySelectorAll(".faq-item");
   if (faqItems.length) {

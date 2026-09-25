@@ -367,6 +367,10 @@ p{color:var(--ink-500);}
 .pagination{display:flex; justify-content:center; gap:8px; margin-top:36px;}
 .pagination a{width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:.86rem; border:1px solid var(--line); color:var(--ink-700);}
 .pagination a.active{background:var(--dark-green); color:var(--white); border-color:var(--dark-green);}
+.pagination a.nav-btn{width:auto; padding:0 14px;}
+@media (max-width: 768px) {
+  .pagination .hide-mobile { display: none; }
+}
 
 /* ============================================================
    ARTICLE / BLOG DETAIL
@@ -374,8 +378,10 @@ p{color:var(--ink-500);}
 .article-layout{display:grid; grid-template-columns:1fr 300px; gap:44px; align-items:start;}
 .article-body h2{margin-top:38px; margin-bottom:14px; font-size:1.4rem;}
 .article-body h3{margin-top:26px; margin-bottom:10px;}
-.article-body p{margin-bottom:16px; font-size:.98rem; color:var(--ink-700);}
-.article-body ul, .article-body ol{margin:0 0 18px 20px; color:var(--ink-700); font-size:.96rem;}
+.article-body p{margin-bottom:16px; font-size:.98rem; color:var(--ink-700); line-height: 1.7;}
+.article-body a{color:var(--green-700); text-decoration:none; font-weight:600; border-bottom:2px solid var(--green-200); transition:all .2s ease; padding-bottom: 1px;}
+.article-body a:hover{border-bottom-color:var(--green-700); background-color: var(--green-50);}
+.article-body ul, .article-body ol{margin:0 0 18px 20px; color:var(--ink-700); font-size:.96rem; line-height: 1.7;}
 .article-body li{margin-bottom:6px;}
 .callout-box{background:var(--green-50); border-left:4px solid var(--green-700); border-radius:var(--radius-sm); padding:18px 20px; margin:22px 0; font-size:.92rem;}
 .quote-block{background:var(--dark-green); color:var(--white); border-radius:var(--radius-md); padding:26px 28px; margin:26px 0; font-family:var(--font-display); font-size:1.1rem; font-style:italic;}
@@ -398,6 +404,70 @@ p{color:var(--ink-500);}
 .faq-item summary{padding:18px 22px; font-weight:600; cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:14px;}
 .faq-item summary::-webkit-details-marker{display:none;}
 .faq-item summary::after{content:"+"; font-size:1.3rem; color:var(--green-700); flex-shrink:0;}
+
+/* ============================================================
+   NETWORK POPUP
+============================================================ */
+.network-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.network-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+.network-popup-content {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+@media (max-width: 600px) {
+  .network-popup-content {
+    max-height: 70vh;
+    padding: 20px;
+  }
+}
+.network-popup.show .network-popup-content {
+  transform: translateY(0);
+}
+.network-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+  flex-shrink: 0;
+}
+.network-popup-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--dark-green);
+}
+.network-popup-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink-500);
+  line-height: 1;
+}
 .faq-item[open] summary::after{content:"–";}
 .faq-item .faq-body{padding:0 22px 20px; font-size:.92rem;}
 
@@ -428,6 +498,57 @@ p{color:var(--ink-500);}
 .scroll-top{position:fixed; bottom:90px; right:22px; z-index:90; width:46px; height:46px; border-radius:50%; background:var(--green-700); color:var(--white); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 20px -10px rgba(21,112,63,0.6); transition:transform .2s ease, opacity .3s ease, visibility .3s ease; opacity:0; visibility:hidden;}
 .scroll-top.show{opacity:1; visibility:visible;}
 .scroll-top:hover{transform:scale(1.05); background:var(--green-900);}
+
+.network-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.network-list a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--green-50);
+  color: var(--ink-700);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+  text-align: left;
+  height: 100%;
+  box-sizing: border-box;
+}
+.network-list a::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2315703f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'%3E%3C/path%3E%3Ccircle cx='12' cy='10' r='3'%3E%3C/circle%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+.network-list a:hover {
+  background: var(--green-100);
+  color: var(--green-700);
+}
+@media (max-width: 900px) {
+  .network-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .network-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 /* ============================================================
    SCROLL ANIMATIONS
