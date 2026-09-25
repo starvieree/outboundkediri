@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://outboundkediri.web.id/sitemap.xml
