@@ -269,11 +269,13 @@
     });
   }, observerOptions);
 
-  var animatedElements = document.querySelectorAll('.section, .hero, .stats-strip, .footer-grid > div');
-  animatedElements.forEach(function(el) {
-    el.classList.add('animate-hidden');
-    observer.observe(el);
-  });
+  if (!document.body.classList.contains('no-animate')) {
+    var animatedElements = document.querySelectorAll('.section, .hero, .stats-strip, .footer-grid > div');
+    animatedElements.forEach(function(el) {
+      el.classList.add('animate-hidden');
+      observer.observe(el);
+    });
+  }
 
   /* ---------- Blog Search ---------- */
   var blogSearchInput = document.getElementById("blogSearchInput");
