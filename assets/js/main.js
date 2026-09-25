@@ -223,10 +223,6 @@
     function updateView() {
       renderArticles();
       renderPagination();
-      // Optional: scroll to top of blog grid
-      var yOffset = -100; 
-      var y = blogGrid.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({top: y, behavior: 'smooth'});
     }
 
     // Initialize
