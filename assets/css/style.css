@@ -85,7 +85,7 @@ p{color:var(--ink-500);}
 .site-header{position:fixed; width:100%; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
 .nav-bar{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:var(--maxw); margin:0 auto;}
 .brand{display:flex; align-items:center; gap:10px;}
-.brand img{width:84px; height:84px; border-radius:10px;}
+.brand img{width:42px; height:42px; border-radius:10px;}
 .brand-text{display:flex; flex-direction:column; line-height:1.15;}
 .brand-text strong{font-family:var(--font-display); font-size:1.05rem; color:var(--dark-green);}
 .brand-text span{font-size:.68rem; letter-spacing:.04em; color:var(--ink-500);}
