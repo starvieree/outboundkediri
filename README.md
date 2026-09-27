@@ -48,7 +48,7 @@ outboundkediri/
 │   └── js/
 │       └── main.js            # Script interaktivitas website
 ├── blog/
-│   └── 7-kesalahan-fatal...   # Artikel blog individual
+│   └── outbound-kediri.html   # Artikel blog individual
 ├── paket/
 │   ├── paket-edukasi.html     # Detail paket LDKS
 │   ├── paket-family.html      # Detail paket Family Gathering

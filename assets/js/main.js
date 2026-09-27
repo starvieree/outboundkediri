@@ -80,6 +80,20 @@
     });
   }
 
+  /* ---------- FAQ Accordion ---------- */
+  var faqDetails = document.querySelectorAll('.faq-accordion details');
+  if (faqDetails.length) {
+    faqDetails.forEach(function(detail) {
+      detail.addEventListener('toggle', function() {
+        if (detail.open) {
+          faqDetails.forEach(function(other) {
+            if (other !== detail) other.open = false;
+          });
+        }
+      });
+    });
+  }
+
   /* ---------- Scroll to Top Button ---------- */
   var scrollTopBtn = document.getElementById("scrollTopBtn");
   if (scrollTopBtn) {
