@@ -55,6 +55,7 @@ outboundkediri/
 │   ├── paket-outbound.html    # Detail paket Corporate
 │   └── rafting-paintball.html # Detail paket Rafting & Paintball
 ├── index.html                 # Halaman Utama (Beranda)
+├── paket.html                 # Halaman Katalog Paket Outbound
 ├── tentang.html               # Halaman Profil Perusahaan
 ├── lokasi-venue.html          # Halaman Direktori Lokasi
 ├── galeri.html                # Halaman Galeri Foto
