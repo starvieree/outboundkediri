@@ -22,6 +22,8 @@ Sebelum mempublikasikan artikel baru di folder `blog/[nama-slug].html`, pastikan
 5. **Tanggal Rilis:** Format ISO `YYYY-MM-DD` untuk JSON-LD dan format teks `DD MMMM YYYY` untuk tampilan meta.
 6. **Waktu Baca:** Estimasi waktu baca (misal `6 Menit Baca`).
 7. **Daftar Isi (`#id` Anchor):** Setiap `<h2>` harus memiliki atribut `id="..."` yang sesuai dengan tautan di Daftar Isi.
+8. **Sidebar Kanan (`<aside>`):** Posisi sidebar otomatis *sticky* saat di-scroll di layar desktop (mengikuti pembaca tanpa menyisakan ruang kosong di kanan), dan otomatis kembali *static* di layar tablet/mobile (< 900px).
+9. **Artikel Terkait (Cukup 1 Baris - Tepat 4 Card):** Bagian Artikel Terkait (`.alt-bg .blog-grid`) wajib berisi **tepat 4 card artikel** agar di layar desktop tampil presisi dalam 1 baris (`grid-template-columns: repeat(4, 1fr)`), 2 kolom pada tablet, dan 1 kolom pada mobile.
 
 ---
 
