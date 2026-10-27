@@ -68,10 +68,10 @@ Salin kode HTML di bawah ini ke dalam file baru (misalnya: `blog/judul-artikel-b
   "@type": "Article",
   "headline": "[Judul Artikel Lengkap SEO]",
   "description": "[Deskripsi singkat artikel untuk Schema.org JSON-LD.]",
-  "author": {"@type": "Person", "name": "Arinda Zakia", "jobTitle": "Penulis"},
+  "author": {"@type": "Person", "name": "Arinda Zakia", "jobTitle": "Penulis", "url": "https://outboundkediri.web.id/tentang"},
   "publisher": {"@id": "https://outboundkediri.web.id/#organization"},
-  "datePublished": "[YYYY-MM-DD]",
-  "dateModified": "[YYYY-MM-DD]",
+  "datePublished": "[YYYY-MM-DDTHH:mm:ss+07:00]",
+  "dateModified": "[YYYY-MM-DDTHH:mm:ss+07:00]",
   "mainEntityOfPage": "https://outboundkediri.web.id/blog/[nama-slug-artikel]",
   "image": "https://outboundkediri.web.id/assets/img/[nama-slug-artikel]-1.webp"
 }
